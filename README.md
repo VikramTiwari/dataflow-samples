@@ -28,4 +28,5 @@ pip install --upgrade apache-beam[gcp]
 
 ### To run samples, simply follow the instructions at the top of the file
 
-- [Hello World](./hello_world.py): Logs an info level message
+- [Hello World](./hello_world.py)
+- [Export BigQuery table to Google Storage](./export_bigquery_table_to_google_storage.py)
