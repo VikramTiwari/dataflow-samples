@@ -21,9 +21,9 @@ PROJECT_ID = 'ivikramtiwari'  # replace with your project id
 MESSAGE = 'Hello world!'
 JOB_NAME = 'exporttable'
 
-dataset_id = 'sample' # replace with your dataset id
-table_id = 'helloworld' # replace with your table id
-export_bucket_url = 'gs://ivikramtiwari-code/data/sample/helloworld.csv' # replace with your bucket url
+dataset_id = 'sample'  # replace with your dataset id
+table_id = 'helloworld'  # replace with your table id
+export_bucket_url = 'gs://ivikramtiwari-code/data/sample/helloworld.csv'  # replace with your bucket url
 
 
 class ExportTable(beam.DoFn):
@@ -34,15 +34,14 @@ class ExportTable(beam.DoFn):
         self._export_bucket_url = export_bucket_url
 
     def process(self, element):
-        # exports the file to google storage
         client = bigquery.Client()
         table = client.dataset(self._dataset_id).table(self._table_id)
         job_name = str(uuid.uuid4())
 
-        job = client.extract_table_to_storage(job_name, table, self._export_bucket_url)
+        job = client.extract_table_to_storage(job_name, table,
+                                              self._export_bucket_url)
         job.begin()
         wait_for_job(job)
-        # table.extract(destination=self._export_bucket_url)
         logging.info('extraction successful')
 
 
@@ -54,6 +53,7 @@ def wait_for_job(job):
                 raise RuntimeError(job.errors)
             return
         time.sleep(1)
+
 
 def run(argv=None):
     """Main entry point"""

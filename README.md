@@ -10,7 +10,7 @@ Using python 2.7, pip and virualenv
 
 ``` bash
 # clone the project
-git clone abc dataflow-samples 
+git clone git@github.com:VikramTiwari/dataflow-samples.git dataflow-samples 
 # switch to the directory
 cd dataflow-sample 
 # make sure it's 2.7
@@ -26,7 +26,7 @@ pip install --upgrade apache-beam[gcp]
 
 ## Samples
 
-### To run samples, simply follow the instructions at the top of the file
+### To run samples, follow the instructions at the top of each file
 
 - [Hello World](./hello_world.py)
 - [Export BigQuery table to Google Storage](./export_bigquery_table_to_google_storage.py)
